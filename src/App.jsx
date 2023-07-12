@@ -26,5 +26,5 @@ const PagesContainer = styled.div`
   border: 1px solid red;
   width: 100hv;
   padding-top: 80px;
-  padding: 80px 5% 0;
+  padding: 100px 5% 0;
 `;
