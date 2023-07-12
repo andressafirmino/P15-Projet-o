@@ -29,7 +29,7 @@ const CsHomePage = styled.div`
   border: 3px solid;
   //background-color: red;
   height: auto;
-  width: 100%;
+  width: 100hv;
   //internal position
   display: flex;
   flex-direction: column;
@@ -40,7 +40,7 @@ const CsHomePage = styled.div`
     }
 
   header{
-    width: 100%;
+    width: 100hv;
     height: 80px;
     background-color: blue;
     display: flex;
@@ -64,19 +64,19 @@ const CsHomePage = styled.div`
   }
 
   main{
-    width: 100%;
+    width: 100hv;
     height: auto;
     border: 1px solid;
 
     display: flex;
     justify-content: space-between;
     flex-wrap: wrap;
-    padding: 30px;
+    padding: 40px;
 
     .product{
         width: 200px;
         height: 300px;
-        margin: 10px;
+        margin: 20px;
 
     }
 

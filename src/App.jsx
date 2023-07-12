@@ -19,4 +19,5 @@ export default App;
 
 const PagesContainer = styled.div`
   border: 1px solid red;
+  width: 100hv;
 `;
