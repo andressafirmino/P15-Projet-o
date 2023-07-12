@@ -44,7 +44,7 @@ const CsHomePage = styled.div`
     display: flex;
     justify-content: space-between;
     flex-wrap: wrap;
-    padding: 40px;
+    //padding: 40px;
 
   }
 `;

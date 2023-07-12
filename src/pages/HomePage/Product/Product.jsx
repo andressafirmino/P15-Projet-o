@@ -33,5 +33,4 @@ const CsProduct = styled.div`
         height: 35px;
         margin-top: 15px;
     }
-
 `;
