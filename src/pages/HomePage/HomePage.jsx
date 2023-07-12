@@ -1,4 +1,6 @@
 import { styled } from "styled-components";
+import Product from "./Product/Product";
+
 
 export default function HomePage() {
 
@@ -10,15 +12,14 @@ export default function HomePage() {
                 <div className="interaction"></div>
             </header>
             <main>
-                <div className="product"></div>
-                <div className="product"></div>
-                <div className="product"></div>
-                <div className="product"></div>
-                <div className="product"></div>
-                <div className="product"></div>
-                <div className="product"></div>
-                <div className="product"></div>
-
+               <Product/>
+               <Product/>
+               <Product/>
+               <Product/>
+               <Product/>
+               <Product/>
+               <Product/>
+               <Product/>
             </main>
         </CsHomePage>
     );
@@ -72,13 +73,6 @@ const CsHomePage = styled.div`
     justify-content: space-between;
     flex-wrap: wrap;
     padding: 40px;
-
-    .product{
-        width: 200px;
-        height: 300px;
-        margin: 20px;
-
-    }
 
   }
 `;
