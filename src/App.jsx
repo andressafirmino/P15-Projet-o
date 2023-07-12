@@ -1,6 +1,7 @@
 import { BrowserRouter, Routes, Route } from "react-router-dom"
 import { styled } from "styled-components";
-
+import HomePage from "./pages/HomePage"
+import CartPage from "./pages/CartPage/CartPage";
 
 function App() {
   return (
