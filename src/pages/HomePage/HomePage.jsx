@@ -6,11 +6,7 @@ export default function HomePage() {
 
     return (
         <CsHomePage>
-            <header>
-                <div className="logo">LOGO</div>
-                <div className="sectors">SALA COZINHA ESCRITÓRIO</div>
-                <div className="interaction"></div>
-            </header>
+            
             <main>
                <Product/>
                <Product/>
@@ -39,30 +35,6 @@ const CsHomePage = styled.div`
         border: 1px solid;
 
     }
-
-  header{
-    width: 100hv;
-    height: 80px;
-    background-color: blue;
-    display: flex;
-    justify-content: space-between;
-
-    .logo{
-        height: 100%;
-        width: 200px;
-        font-size: 50px;
-    }
-    .sectors{
-        height: 100%;
-        width: 500px;
-        font-size: 30px;
-
-    }
-    .interaction{
-        height: 100%;
-        width: 300px;
-    }
-  }
 
   main{
     width: 100hv;
