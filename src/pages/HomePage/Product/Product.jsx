@@ -1,14 +1,24 @@
+import { useNavigate } from "react-router";
 import { styled } from "styled-components";
 
 
 
-export default function Product() {
+export default function Product( props ) {
+    const navigate = useNavigate();
+
+    const {name , images, description, value, sector} = props.prod;
+    const {id } = props;
+
+    const displayProduct = (sector, id)=>{
+        navigate(`/${sector}/${id}`);
+    }
+
     return (
         <CsProduct>
-            <img src="https://www.taqi.com.br/ccstore/v1/images/?source=/file/v6154013894709614152/products/9999254019721.00-cafeteira-chaleira-eletrica-cadence-preta-110v.jpg&height=470&width=470&height=470&width=470&quality=0.8" />
-            <h2>CAFETEIRA DA BOA</h2>
-            <div className="valuesProduct"> R$ 229,00</div>
-            <button className="addCard">Adiconar ao carrinho</button>
+            <img src={images[0]}  onClick={()=>displayProduct(sector, id)}/>
+            <h2  onClick={()=>displayProduct(sector, id)}>{name}</h2>
+            <div className="valuesProduct"> R$ {value.toFixed(2)}</div>
+            <button className="addCard">Adquira Agora!</button>
         </CsProduct>
     );
 }
@@ -24,13 +34,19 @@ const CsProduct = styled.div`
 
     img{
         width: 100%;
+        cursor: pointer;
+    }
+    h2{
+        overflow-y: hidden;
+        max-height: 100px;
+        cursor: pointer;
     }
     .valuesProduct{
-        margin-top: 5px; 
+        margin-top: 3px; 
     }
     .addCard{
         width: 100%;
         height: 35px;
-        margin-top: 15px;
+        margin-top: 3px;
     }
 `;

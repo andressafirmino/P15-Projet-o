@@ -1,5 +1,6 @@
 import { styled } from "styled-components";
 import Product from "./Product/Product";
+import DATAPRODUCTS from "../../DATA";
 
 
 export default function HomePage() {
@@ -8,14 +9,7 @@ export default function HomePage() {
         <CsHomePage>
             
             <main>
-               <Product/>
-               <Product/>
-               <Product/>
-               <Product/>
-               <Product/>
-               <Product/>
-               <Product/>
-               <Product/>
+               {DATAPRODUCTS.map((prod, index) => <Product prod={prod} id = {index +1 }/>)}               
             </main>
         </CsHomePage>
     );

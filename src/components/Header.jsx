@@ -1,7 +1,5 @@
 import { styled } from "styled-components";
 
-
-
 export default function Header() {
     return (
         <CsHeader>
@@ -9,7 +7,12 @@ export default function Header() {
                 <div className="logo">LOGO</div>
                 <div className="interaction"></div>
             </div>
-            <div className="sectors">SALA COZINHA ESCRITÓRIO</div>
+            <div className="sectors">
+                <p>jantar</p>
+                <p>reunião</p>
+                <p>jardim</p>
+                <p>infantil</p>
+            </div>
 
         </CsHeader>
     );
@@ -49,12 +52,20 @@ const CsHeader = styled.div`
 
     
     .sectors{
-        padding: 0 5%;
+        padding: 0 15%;
         height: 30%;
         width: 100%;
         font-size: 10px;
         background-color: black;
         color: white;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        font-size: 20px;
+
+        p{
+            border: 2px solid white
+        }
     }
    
 `;
