@@ -1,30 +1,30 @@
 import { useState } from "react";
 import { styled } from "styled-components";
 import CartProducts from "./CartProductsPage/CartProducts";
+import Footer from "../../components/Footer";
 
-export default function CartPage() {
-
+export default function CartPage() {    
     
     const cartItem = [
         {
             id: 1,
             name: "mesa",
             image: "https://www.larshopping.com.br/media/catalog/product/cache/1/image/1200x/9df78eab33525d08d6e5fb8d27136e95/w/h/whatsapp_image_2022-03-30_at_11.40.16_1_.jpeg",
-            value: "3.000,99",
+            value: "3000.99",
             description: "Mesa com 6 lugares"
         },
         {
-            id: 1,
-            name: "mesa",
+            id: 2,
+            name: "mesa com 6 lugares",
             image: "https://www.larshopping.com.br/media/catalog/product/cache/1/image/1200x/9df78eab33525d08d6e5fb8d27136e95/w/h/whatsapp_image_2022-03-30_at_11.40.16_1_.jpeg",
-            value: "3.000,99",
+            value: "1120.99",
             description: "Mesa com 6 lugares"
         },
         {
-            id: 1,
-            name: "mesa",
+            id: 3,
+            name: "mesa com 3 lugares",
             image: "https://www.larshopping.com.br/media/catalog/product/cache/1/image/1200x/9df78eab33525d08d6e5fb8d27136e95/w/h/whatsapp_image_2022-03-30_at_11.40.16_1_.jpeg",
-            value: "3.000,99",
+            value: "2100.00",
             description: "Mesa com 6 lugares"
         }
     ]
@@ -42,7 +42,9 @@ export default function CartPage() {
             </CartHeader>
             {cartItem.map(item => (<CartProducts key={item.id} 
             name={item.name} image={item.image}
-            value={item.value} description={item.description}/>))}          
+            value={item.value} description={item.description}
+            />))}  
+            <Footer/>        
         </CartContainer>
     )
 }
@@ -66,7 +68,7 @@ const CartHeader = styled.div`
     margin-bottom: 15px;
     p {
         font-size: 25px;
-        color: #004B99;
+        color: #73384E;
     }
     div {
         display: flex;
@@ -80,7 +82,7 @@ const CartHeader = styled.div`
         justify-content: center;
         align-items: center;
         font-size: 25px;
-        color: #8893B6;
+        color: #73384E;
         margin-left: 10px;
     }
     }

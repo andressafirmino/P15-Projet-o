@@ -1,30 +1,35 @@
-import { useState } from "react";
+import { useContext, useState } from "react";
 import { styled } from "styled-components";
+import CONTEXT from "../../../context/context";
 
 export default function CartProducts(props) {
     const { name, description, value, image } = props;
-    const [counter, setCounter] = useState(0);
-    const [subtotal, setSubtotal] = useState(0);
-    
+    const { total, setTotal } = useContext(CONTEXT);
+    const [counter, setCounter] = useState(1);
+    const [subtotal, setSubtotal] = useState(parseFloat(value).toLocaleString("pt-BR"));
+
     function minus() {
-        setCounter(counter => counter - 1);
-        let numberFormat = parseFloat(value.replace(/\./g, "").replace(",", ".")).toFixed(2);
-        let mult = counter * numberFormat;
-        let subtotalWithSeparator = mult.toLocaleString('pt-BR');
-        setSubtotal(subtotalWithSeparator);
+        if (counter === 0 || total === 0) {
+            return;
+        }
+        const newCounter = counter - 1;
+        setCounter(newCounter > 0 ? newCounter : 0);
+        const newSubtotal = (newCounter * value).toLocaleString("pt-BR");
+        setSubtotal(newSubtotal);
+        setTotal((prevTotal) => prevTotal - parseFloat(value));
     }
     function plus() {
-        setCounter(counter => counter + 1);
-        let numberFormat = parseFloat(value.replace(/\./g, "").replace(",", ".")).toFixed(2);
-        let mult = counter * numberFormat;
-        let subtotalWithSeparator = mult.toLocaleString('pt-BR');
-        setSubtotal(subtotalWithSeparator);        
+        const newCounter = counter + 1;
+        setCounter(newCounter);
+        const newSubtotal = (newCounter * value).toLocaleString("pt-BR");
+        setSubtotal(newSubtotal);
+        setTotal((prevTotal) => prevTotal + parseFloat(value));
     }
 
     return (
         <ItemList >
             <div>
-                <img src={image}/>
+                <img src={image} />
                 <InfoItem>
                     <p>{name}</p>
                     <p>{description}</p>
@@ -33,7 +38,7 @@ export default function CartProducts(props) {
             <div>
                 <Counter>
                     <div>
-                        <p>R${value}</p>
+                        <p>R${parseFloat(value).toLocaleString('pt-BR')}</p>
                     </div>
                     <CounterButton>
                         <div>

@@ -11,22 +11,26 @@ import SignInPage from "./pages/SignIn/SignIn";
 
 function App() {
   const [allProd, setAllProd] = useState(DATAPRODUCTS);
-  const [user, setUser] = useState()
+  const [user, setUser] = useState();
+  const [counter, setCounter] = useState(1);
+  const [subtotal, setSubtotal] = useState('');
+  const [total, setTotal] = useState(0);
 
   return (
-  <PagesContainer>
-    <CONTEXT.Provider value={{currentId: '', user, setUser}}>
-    <BrowserRouter>
-      <Header/>
-      <Routes>
-        <Route path="/" element={<HomePage allProd={allProd}/>} />
-        <Route path="/sign-in" element={<SignInPage />}/>
-        <Route path="/carrinho" element={<CartPage />}/>
-        <Route path="/:sector/:id" element={<ProductPage />} />
-      </Routes>
-    </BrowserRouter>
-    </CONTEXT.Provider>
-  </PagesContainer>
+    <PagesContainer>
+      <CONTEXT.Provider value={{ currentId: '', user, setUser,
+        total, setTotal }}>
+        <BrowserRouter>
+          <Header />
+          <Routes>
+            <Route path="/" element={<HomePage allProd={allProd} />} />
+            <Route path="/sign-in" element={<SignInPage />} />
+            <Route path="/carrinho" element={<CartPage />} />
+            <Route path="/:sector/:id" element={<ProductPage />} />
+          </Routes>
+        </BrowserRouter>
+      </CONTEXT.Provider>
+    </PagesContainer>
   )
 }
 
