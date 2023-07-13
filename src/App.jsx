@@ -12,8 +12,6 @@ import SignInPage from "./pages/SignIn/SignIn";
 function App() {
   const [allProd, setAllProd] = useState(DATAPRODUCTS);
   const [user, setUser] = useState();
-  const [counter, setCounter] = useState(1);
-  const [subtotal, setSubtotal] = useState('');
   const [total, setTotal] = useState(0);
 
   return (
