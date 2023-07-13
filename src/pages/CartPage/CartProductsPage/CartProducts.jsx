@@ -3,7 +3,7 @@ import { styled } from "styled-components";
 
 export default function CartProducts(props) {
     const { name, description, value, image } = props;
-    const [counter, setCounter] = useState(1);
+    const [counter, setCounter] = useState(0);
     const [subtotal, setSubtotal] = useState(0);
     
     function minus() {
@@ -18,8 +18,7 @@ export default function CartProducts(props) {
         let numberFormat = parseFloat(value.replace(/\./g, "").replace(",", ".")).toFixed(2);
         let mult = counter * numberFormat;
         let subtotalWithSeparator = mult.toLocaleString('pt-BR');
-        setSubtotal(subtotalWithSeparator);
-        
+        setSubtotal(subtotalWithSeparator);        
     }
 
     return (
@@ -64,6 +63,7 @@ const ItemList = styled.div`
     display: flex;
     justify-content: space-between;
     align-items: center;
+    margin-bottom: 10px;
     div {
         display: flex;
         justify-content: flex-start;

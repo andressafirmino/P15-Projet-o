@@ -12,6 +12,20 @@ export default function CartPage() {
             image: "https://www.larshopping.com.br/media/catalog/product/cache/1/image/1200x/9df78eab33525d08d6e5fb8d27136e95/w/h/whatsapp_image_2022-03-30_at_11.40.16_1_.jpeg",
             value: "3.000,99",
             description: "Mesa com 6 lugares"
+        },
+        {
+            id: 1,
+            name: "mesa",
+            image: "https://www.larshopping.com.br/media/catalog/product/cache/1/image/1200x/9df78eab33525d08d6e5fb8d27136e95/w/h/whatsapp_image_2022-03-30_at_11.40.16_1_.jpeg",
+            value: "3.000,99",
+            description: "Mesa com 6 lugares"
+        },
+        {
+            id: 1,
+            name: "mesa",
+            image: "https://www.larshopping.com.br/media/catalog/product/cache/1/image/1200x/9df78eab33525d08d6e5fb8d27136e95/w/h/whatsapp_image_2022-03-30_at_11.40.16_1_.jpeg",
+            value: "3.000,99",
+            description: "Mesa com 6 lugares"
         }
     ]
 
