@@ -32,7 +32,7 @@ export default function Header() {
 const CsHeader = styled.div`
     width: 100%;
     height: 100px;
-    background-color: blue;
+    background-color: #73384e;
     display: flex;
     flex-direction: column;
     justify-content: space-between;
