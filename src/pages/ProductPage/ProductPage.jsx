@@ -1,17 +1,25 @@
 import { styled } from "styled-components";
+import CONTEXT from "../../context/context";
+import { useContext } from "react";
+
+export default function ProductPage(props) {
+    let {currentId} = useContext(CONTEXT);
+    console.log('estou na product e page e o id atual é ',currentId);
+
+    const {allProd} = props;
+    console.log(   'testando a props vindo da app', allProd);
+    //const currentProd = allProd[currentId -1];
+    //console.log(currentProd);
+    // {images, description, name , value, discount, sector } = currentProd;
 
 
-export default function ProductPage() {
     return (
         <CsProductPage>
             <main>
                 <div className="imagesProduct">
                     <div className="containerSmallImgs">
-                        <img src="" />
-                        <img src="" />
-                        <img src="https://www.taqi.com.br/ccstore/v1/images/?source=/file/v1978756611899155527/products/9999254019721.01-cafeteira-chaleira-eletrica-cadence-preta-110v.jpg&height=84&width=84&quality=0.9" />
-                        <img src="" />
-                        <img src="" />
+                        {/* {images.map(img =><img src={img} />)} */}
+                        
                     </div>
                     <img src="https://www.taqi.com.br/ccstore/v1/images/?source=/file/v6154013894709614152/products/9999254019721.00-cafeteira-chaleira-eletrica-cadence-preta-110v.jpg&height=500&width=500&quality=0.9"  className="bigImg"/>
                 </div>

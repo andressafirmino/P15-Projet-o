@@ -3,13 +3,14 @@ import Product from "./Product/Product";
 import DATAPRODUCTS from "../../DATA";
 
 
-export default function HomePage() {
+export default function HomePage(props) {
+  const{allProd} = props
 
     return (
         <CsHomePage>
             
             <main>
-               {DATAPRODUCTS.map((prod, index) => <Product prod={prod} id = {index +1 }/>)}               
+               {allProd.map((prod, index) => <Product prod={prod} id = {index +1 }/>)}               
             </main>
         </CsHomePage>
     );
