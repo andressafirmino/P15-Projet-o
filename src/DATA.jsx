@@ -470,20 +470,6 @@ const DATAPRODUCTS = [
         ]
     },
     {
-        name: "",
-        description:``,
-        value: ,
-        discount: 20,
-        sector: 'reuniao',
-        images:[
-            '',
-            '',
-            '',
-            '',
-            ''
-        ]
-    },
-    {
         name: `Conjunto de Mesa 1,20x70 e Mesa Aparador Dobrável com 6 Cadeiras - Tabaco - PREGUIÇOSA
         `,
         description:`Conjunto de Mesa 1,20x70 e Mesa Aparador Dobrável com 6 Cadeiras - Tabaco
@@ -607,7 +593,7 @@ const DATAPRODUCTS = [
             'https://product-hub-prd.madeiramadeira.com.br/184554/images/b17861e7-f53f-40ff-8f7f-118df829d65facca1f95b49b1a33e211845541.jpg?width=700&canvas=1:1&bg-color=FFF',
             
         ]
-    },
+    }
     // {
     //     name: "",
     //     description:``,
