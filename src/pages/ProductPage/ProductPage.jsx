@@ -30,7 +30,7 @@ export default function ProductPage(props) {
             </main>
             <div className="description">
                 <h1>DESCRIÇÃO</h1>
-                <div className="descriptionText">asdfasdfasdfasd asdfasfadfasdfas asddfasdfasdfasf asdfasdfasdfasdf asdfasfdasdfasdf asdffasdfasdfsa  asdfasdfasfda dsfasfdasdfasd asdfasdfasdfa çlaskdjfçlakjsdfçakjsdçfkajsdslfkajsdçlfkjasçdkfjaçsdkjfaçskdjfçaksdjf</div>
+                <div className="descriptionText">{description}</div>
             </div>
         </CsProductPage>
     );
@@ -63,6 +63,7 @@ const CsProductPage = styled.div`
                     height: 20%;
                     border: 1px solid;
                     width: 100%;
+                    cursor: pointer;
                 }
             }
             .bigImg{
@@ -82,7 +83,7 @@ const CsProductPage = styled.div`
             justify-content: space-between;
 
             h2{
-                font-size: 50px;
+                font-size: 38px;
             }
 
             .values{
