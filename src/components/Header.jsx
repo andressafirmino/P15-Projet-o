@@ -1,5 +1,5 @@
 import { styled } from "styled-components";
-import cart from './../assets/cart-outline.svg'
+import logo from './../assets/logos/fundoBranco.jpeg'
 import { useNavigate } from "react-router-dom";
 
 export default function Header() {
@@ -7,10 +7,12 @@ export default function Header() {
     return (
         <CsHeader>
             <div className="containerLogoIteraction">
-                <div className="logo"  onClick={()=>navigate('/')}>LOGO</div>
+                <div className="logo"  onClick={()=>navigate('/')}>
+                    <img src={logo} />
+                </div>
                 <div className="interaction">
                     <div className="carrinho" onClick={()=>navigate('/carrinho')}>
-                        <div className="carrinhoImg"><img src={cart} alt="carrinho" /></div>                        
+                    <ion-icon name="cart-outline"></ion-icon>
                         <p>CARRINHO</p>
                     </div>
                     <div className="signInUp">LOGIN/CADASTRO</div>
@@ -38,6 +40,7 @@ const CsHeader = styled.div`
     top: 0;
     left: 0;
     //padding: 0 5%;
+    
 
     .containerLogoIteraction{
         margin: 0 5%;
@@ -45,12 +48,21 @@ const CsHeader = styled.div`
         height: 70%;
         //flex-direction: column;
         justify-content: space-between;
+        align-items: center;
+
 
         .logo{
-            height: 100%;
+            height: 90%;
             width: 200px;
             font-size: 50px;
             cursor: pointer;
+
+            img{
+                width: 100%;
+                height: 90%;
+                border-radius: 12px;
+
+            }
         }
         .interaction{
             height: 100%;
@@ -72,10 +84,11 @@ const CsHeader = styled.div`
                 border-radius: 12px;
                 padding: 0 10px;
                 cursor: pointer;
-                .carrinhoImg{
-                    height: 50px;
+                color: green;
+                ion-icon{
+                    height: 40px;
                     width: 50px;
-                    color: green;
+                   
                 }
             }
 
