@@ -1,5 +1,5 @@
 import { styled } from "styled-components";
-import logo from './../assets/logos/fundoBranco.jpeg'
+import logo from '../../public/WS.png' 
 import { useNavigate } from "react-router-dom";
 
 export default function Header() {
@@ -9,6 +9,7 @@ export default function Header() {
             <div className="containerLogoIteraction">
                 <div className="logo"  onClick={()=>navigate('/')}>
                     <img src={logo} />
+                    <><h2>WALET STORE</h2></>
                 </div>
                 <div className="interaction">
                     <div className="carrinho" onClick={()=>navigate('/carrinho')}>
@@ -32,7 +33,7 @@ export default function Header() {
 const CsHeader = styled.div`
     width: 100%;
     height: 100px;
-    background-color: blue;
+    background-color: #fff;
     display: flex;
     flex-direction: column;
     justify-content: space-between;
@@ -52,15 +53,17 @@ const CsHeader = styled.div`
 
 
         .logo{
-            height: 90%;
-            width: 200px;
-            font-size: 50px;
+            display:flex;
+            align-items:center;
+            height: 65px;
+            width: 65px;
+            font-size: 25px;
             cursor: pointer;
 
             img{
                 width: 100%;
-                height: 90%;
-                border-radius: 12px;
+                height: 100%;
+                
 
             }
         }
@@ -105,8 +108,8 @@ const CsHeader = styled.div`
         height: 30%;
         width: 100%;
         font-size: 10px;
-        background-color: black;
-        color: white;
+        background-color: #73384E;
+        color: black;
         display: flex;
         justify-content: space-between;
         align-items: center;

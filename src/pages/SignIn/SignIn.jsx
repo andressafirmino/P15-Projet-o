@@ -72,7 +72,8 @@ export default function SignInPage() {
         font-weight: 600;
         color: #fff;
         cursor: pointer;
-        width: 100%;
+        width: calc(100% - 30px);
+        
         padding: 12px;
     }
     h1 {
@@ -86,8 +87,8 @@ export default function SignInPage() {
         border-radius: 5px;
         outline: none;
         border: 1px solid #ccc;
-        padding: 15px;
-        margin: 1px;
+        padding: 12px;
+        
         :focus {
             border: 2px solid #ffb6b6;
             margin: 0px;
