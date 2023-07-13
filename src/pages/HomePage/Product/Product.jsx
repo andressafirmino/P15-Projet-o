@@ -1,24 +1,12 @@
 import { useNavigate } from "react-router";
 import { styled } from "styled-components";
-import CONTEXT from "../../../context/context";
-import { useContext } from "react";
-
-
 
 export default function Product( props ) {
     const navigate = useNavigate();
-    let {currentId} = useContext(CONTEXT);
-    const {name , images, description, value, sector} = props.prod;
+    const {name , images, value, sector} = props.prod;
     const {id } = props;
 
-
-    
-    
-
-
     const displayProduct = (sector, id)=>{
-        currentId = id;
-        console.log('CLIQUEI! e esse é o id atual', currentId);
         navigate(`/${sector}/${id}`);
     }
 

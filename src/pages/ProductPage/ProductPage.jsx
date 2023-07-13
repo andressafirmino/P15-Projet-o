@@ -8,7 +8,7 @@ export default function ProductPage(props) {
     const currentProd = DATAPRODUCTS[id -1];
     const { images, name, description, value, discount } = currentProd;
     const [mainImage, setMainImage] = useState(0);
-    const anchoring = value/(1-discount/100);
+    const anchoring = (value/(1-discount/100)).toFixed(2);
 
     return (
         <CsProductPage>
@@ -22,7 +22,7 @@ export default function ProductPage(props) {
                 <div className="lookAndAct ">
                     <h2>{name}</h2>
                     <div className="values">
-                        <div className="before">de R$ {anchoring.toFixed(2)}</div>
+                        {Number(discount ) > 0 && <div className="before">de R$ {anchoring}</div>}
                         <div className="after">por R$ {value}</div>
                     </div>
                     <button>ADQUIRA AGORA!</button>
