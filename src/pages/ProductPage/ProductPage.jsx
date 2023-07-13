@@ -23,7 +23,7 @@ export default function ProductPage(props) {
                     <h2>{name}</h2>
                     <div className="values">
                         {Number(discount ) > 0 && <div className="before">de R$ {anchoring}</div>}
-                        <div className="after">por R$ {value}</div>
+                        <div className="after">por R$ {value.toFixed(2)}</div>
                     </div>
                     <button>ADQUIRA AGORA!</button>
                 </div>
