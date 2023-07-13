@@ -1,11 +1,20 @@
 import { styled } from "styled-components";
+import cart from './../assets/cart-outline.svg'
+import { useNavigate } from "react-router-dom";
 
 export default function Header() {
+    const navigate = useNavigate();
     return (
         <CsHeader>
             <div className="containerLogoIteraction">
-                <div className="logo">LOGO</div>
-                <div className="interaction"></div>
+                <div className="logo"  onClick={()=>navigate('/')}>LOGO</div>
+                <div className="interaction">
+                    <div className="carrinho" onClick={()=>navigate('/carrinho')}>
+                        <div className="carrinhoImg"><img src={cart} alt="carrinho" /></div>                        
+                        <p>CARRINHO</p>
+                    </div>
+                    <div className="signInUp">LOGIN/CADASTRO</div>
+                </div>
             </div>
             <div className="sectors">
                 <p>jantar</p>
@@ -41,11 +50,38 @@ const CsHeader = styled.div`
             height: 100%;
             width: 200px;
             font-size: 50px;
+            cursor: pointer;
         }
         .interaction{
             height: 100%;
-            width: 47%;
+            width: 30%;
             border: 1px solid;
+
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+
+
+
+            .carrinho{
+                display: flex;
+                align-items: center;
+                background-color: white;
+                border: 1px solid;
+                width: auto;
+                border-radius: 12px;
+                padding: 0 10px;
+                cursor: pointer;
+                .carrinhoImg{
+                    height: 50px;
+                    width: 50px;
+                    color: green;
+                }
+            }
+
+            .signInUp{
+
+            }
         }
 
     }
