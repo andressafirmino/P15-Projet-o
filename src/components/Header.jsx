@@ -16,7 +16,7 @@ export default function Header() {
                     <ion-icon name="cart-outline"></ion-icon>
                         <p>CARRINHO</p>
                     </div>
-                    <div className="signInUp">LOGIN/CADASTRO</div>
+                    <div className="signInUp"  onClick={()=>navigate('/sign-in')}>LOGIN/CADASTRO</div>
                 </div>
             </div>
             <div className="sectors">
@@ -96,7 +96,14 @@ const CsHeader = styled.div`
             }
 
             .signInUp{
-
+                border: 1px solid  #73384E;
+                height: 40px;
+                display: flex;
+                align-items: center;
+                padding: 0 10px;
+                border-radius: 12px;
+                color: #73384E;
+                cursor: pointer;
             }
         }
 
@@ -109,7 +116,7 @@ const CsHeader = styled.div`
         width: 100%;
         font-size: 10px;
         background-color: #73384E;
-        color: black;
+        color: white;
         display: flex;
         justify-content: space-between;
         align-items: center;
