@@ -12,11 +12,13 @@ export default function Product( props ) {
     const {id } = props;
 
 
-    currentId = id;
-    console.log('estou na home e esse é o id atual', currentId);
+    
+    
 
 
     const displayProduct = (sector, id)=>{
+        currentId = id;
+        console.log('CLIQUEI! e esse é o id atual', currentId);
         navigate(`/${sector}/${id}`);
     }
 

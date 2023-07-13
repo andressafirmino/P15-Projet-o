@@ -1,33 +1,29 @@
 import { styled } from "styled-components";
-import CONTEXT from "../../context/context";
-import { useContext } from "react";
+import { useParams } from "react-router-dom";
+import DATAPRODUCTS from "../../DATA";
+import { useState } from "react";
 
 export default function ProductPage(props) {
-    let {currentId} = useContext(CONTEXT);
-    console.log('estou na product e page e o id atual é ',currentId);
-
-    const {allProd} = props;
-    console.log(   'testando a props vindo da app', allProd);
-    //const currentProd = allProd[currentId -1];
-    //console.log(currentProd);
-    // {images, description, name , value, discount, sector } = currentProd;
-
+    const {sector, id} = useParams();
+    const currentProd = DATAPRODUCTS[id -1];
+    const { images, name, description, value, discount } = currentProd;
+    const [mainImage, setMainImage] = useState(0);
+    const anchoring = value/(1-discount/100);
 
     return (
         <CsProductPage>
             <main>
                 <div className="imagesProduct">
                     <div className="containerSmallImgs">
-                        {/* {images.map(img =><img src={img} />)} */}
-                        
+                        {images.map((img, idx ) =><img src={img} onClick={()=>setMainImage(idx)}/>)}                        
                     </div>
-                    <img src="https://www.taqi.com.br/ccstore/v1/images/?source=/file/v6154013894709614152/products/9999254019721.00-cafeteira-chaleira-eletrica-cadence-preta-110v.jpg&height=500&width=500&quality=0.9"  className="bigImg"/>
+                    <img src={images[mainImage]} className="bigImg"/>
                 </div>
                 <div className="lookAndAct ">
-                    <h2>CAFETEIRA DA BOA</h2>
+                    <h2>{name}</h2>
                     <div className="values">
-                        <div className="before">de R$ 500,00</div>
-                        <div className="after">por R$ 399,90</div>
+                        <div className="before">de R$ {anchoring.toFixed(2)}</div>
+                        <div className="after">por R$ {value}</div>
                     </div>
                     <button>ADQUIRA AGORA!</button>
                 </div>

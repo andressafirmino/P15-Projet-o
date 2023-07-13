@@ -10,11 +10,10 @@ import CONTEXT from "./context/context";
 
 function App() {
   const [allProd, setAllProd] = useState(DATAPRODUCTS);
-  let currentId;
 
   return (
   <PagesContainer>
-    <CONTEXT.Provider value={{currentId}}>
+    <CONTEXT.Provider value={{currentId: ''}}>
     <BrowserRouter>
       <Header/>
       <Routes>
