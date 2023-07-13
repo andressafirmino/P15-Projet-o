@@ -1,11 +1,22 @@
 import { styled } from "styled-components";
+import logo from './../assets/logos/fundoBranco.jpeg'
+import { useNavigate } from "react-router-dom";
 
 export default function Header() {
+    const navigate = useNavigate();
     return (
         <CsHeader>
             <div className="containerLogoIteraction">
-                <div className="logo">LOGO</div>
-                <div className="interaction"></div>
+                <div className="logo"  onClick={()=>navigate('/')}>
+                    <img src={logo} />
+                </div>
+                <div className="interaction">
+                    <div className="carrinho" onClick={()=>navigate('/carrinho')}>
+                    <ion-icon name="cart-outline"></ion-icon>
+                        <p>CARRINHO</p>
+                    </div>
+                    <div className="signInUp">LOGIN/CADASTRO</div>
+                </div>
             </div>
             <div className="sectors">
                 <p>jantar</p>
@@ -29,6 +40,7 @@ const CsHeader = styled.div`
     top: 0;
     left: 0;
     //padding: 0 5%;
+    
 
     .containerLogoIteraction{
         margin: 0 5%;
@@ -36,16 +48,53 @@ const CsHeader = styled.div`
         height: 70%;
         //flex-direction: column;
         justify-content: space-between;
+        align-items: center;
+
 
         .logo{
-            height: 100%;
+            height: 90%;
             width: 200px;
             font-size: 50px;
+            cursor: pointer;
+
+            img{
+                width: 100%;
+                height: 90%;
+                border-radius: 12px;
+
+            }
         }
         .interaction{
             height: 100%;
-            width: 47%;
+            width: 30%;
             border: 1px solid;
+
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+
+
+
+            .carrinho{
+                display: flex;
+                align-items: center;
+                background-color: white;
+                border: 1px solid;
+                width: auto;
+                border-radius: 12px;
+                padding: 0 10px;
+                cursor: pointer;
+                color: green;
+                ion-icon{
+                    height: 40px;
+                    width: 50px;
+                   
+                }
+            }
+
+            .signInUp{
+
+            }
         }
 
     }
