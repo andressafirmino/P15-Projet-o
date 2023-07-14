@@ -8,7 +8,7 @@ export default function CartProducts(props) {
     const { total, setTotal } = useContext(CONTEXT);
     const [counter, setCounter] = useState(1);
     const [subtotal, setSubtotal] = useState(parseFloat(value).toLocaleString("pt-BR"));
-
+    
     function minus() {
         if (counter === 0 || total === 0) {
             return;
