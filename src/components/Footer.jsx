@@ -8,7 +8,7 @@ export default function Footer() {
     const {total} = useContext(CONTEXT);
     return (
         <FooterContainer>
-            <p>Total R${total}</p>
+            <p>Total R${total.toLocaleString("pt-BR")}</p>
             <button><p>Finalizar compra</p></button>
         </FooterContainer>
     )

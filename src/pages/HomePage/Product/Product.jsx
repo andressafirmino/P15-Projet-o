@@ -46,4 +46,7 @@ const CsProduct = styled.div`
         height: 35px;
         margin-top: 3px;
     }
+    .select {
+        background-color: green;
+    }
 `;

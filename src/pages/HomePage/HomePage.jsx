@@ -9,7 +9,7 @@ export default function HomePage(props) {
   const [allProducts, setAllProducts] = useState('CARREGANDO...');
 
   useEffect(()=>{
-    axios.get('http://localhost:5000/')
+    axios.get(`${import.meta.env.VITE_API_URL}/`)
     .then((res)=>{
       setAllProducts(res.data);
     })

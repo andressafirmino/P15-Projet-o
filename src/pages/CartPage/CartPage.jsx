@@ -61,7 +61,6 @@ export default function CartPage() {
                         <div>Preço Total</div>
                         <img onClick={deleteA} src={Trash} />
                     </div>
-
                 </CartHeader>
                 {cartItem.map(item => (<CartProducts key={item.id}
                     name={item.name} image={item.image}
@@ -111,14 +110,12 @@ const CartHeader = styled.div`
         font-size: 25px;
         color: #73384E;
         margin-left: 10px;
-    }
-    img {
-        width: 25px;
-        height: auto;
-    } 
-    }
-    
-    
+        }
+        img {
+            width: 25px;
+            height: auto;
+        } 
+    }   
 `
 const DeleteContainer = styled.div`
     width: 100%;
