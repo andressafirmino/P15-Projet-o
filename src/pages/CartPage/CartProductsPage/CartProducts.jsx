@@ -4,7 +4,7 @@ import CONTEXT from "../../../context/context";
 import Trash from "../../.././assets/logos/trash-outline.svg";
 
 export default function CartProducts(props) {
-    const { name, description, value, image } = props;
+    const { name, value, image } = props;
     const { total, setTotal } = useContext(CONTEXT);
     const [counter, setCounter] = useState(1);
     const [subtotal, setSubtotal] = useState(parseFloat(value).toLocaleString("pt-BR"));
