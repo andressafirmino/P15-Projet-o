@@ -49,7 +49,9 @@ export default function CartProducts(props) {
                 <div>
                     <p>R${subtotal}</p>
                 </div>
-                <ion-icon name="trash-outline"></ion-icon>
+                <ion-icon name="trash-outline"  className="lixinho"></ion-icon>
+
+                
             </Counter>
         </ItemList>
     )
@@ -100,7 +102,7 @@ const Counter = styled.div`
     border: 1px solid #000000;
     display: flex;
     justify-content: flex-end;
-    div {
+    div{
         width: 100%;
         height: 60px;
         border: 1px solid #000000;
@@ -112,12 +114,7 @@ const Counter = styled.div`
         font-size: 20px;
         color: #000000;       
     }
-    ion-icon {        
-        width: 100px;
-        height: auto;
-        color: red;
-    }
-`
+`;
 const CounterButton = styled.div`
     display: flex;
     justify-content: center;
