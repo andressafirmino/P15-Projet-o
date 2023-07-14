@@ -1,15 +1,29 @@
 import { styled } from "styled-components";
 import { useParams } from "react-router-dom";
-import DATAPRODUCTS from "../../DATA";
-import { useState } from "react";
+import { useEffect, useState } from "react";
+import axios from "axios";
 
 export default function ProductPage(props) {
     const {sector, id} = useParams();
-    const currentProd = DATAPRODUCTS[id -1];
+    const [currentProd, setCurrenteProd] = useState('carregando...');
     const { images, name, description, value, discount } = currentProd;
     const [mainImage, setMainImage] = useState(0);
     const anchoring = (value/(1-discount/100)).toFixed(2);
 
+
+    useEffect(()=>{
+        axios.post('http://localhost:5000/singleProduct', { id})
+            .then((res)=>{
+                //console.log('este é o single product',res.data)
+                setCurrenteProd(res.data);
+            })
+            .catch(erro=>console.log(erro))
+
+    },[]);
+
+
+      
+    if(currentProd === 'carregando...' )return currentProd;
     return (
         <CsProductPage>
             <main>
