@@ -18,7 +18,7 @@ export default function SectorPage(props) {
       console.log(err.message)
     })
 
-  }, []);
+  }, [sector]);
 
     if(allProducts === 'CARREGANDO...')return allProducts;
     return(
