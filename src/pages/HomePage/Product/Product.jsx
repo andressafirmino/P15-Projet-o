@@ -3,8 +3,7 @@ import { styled } from "styled-components";
 
 export default function Product( props ) {
     const navigate = useNavigate();
-    const {name , images, value, sector} = props.prod;
-    const {id } = props;
+    const {name , images, value, sector, id} = props.prod;
 
     const displayProduct = (sector, id)=>{
         navigate(`/${sector}/${id}`);
