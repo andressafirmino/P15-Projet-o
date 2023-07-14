@@ -9,6 +9,7 @@ import DATAPRODUCTS from "./DATA";
 import CONTEXT from "./context/context";
 import SignInPage from "./pages/SignIn/SignIn";
 import SectorPage from "./pages/SectorPage/SectorPage";
+import SignUpPage from "./pages/SignUp/SignUp";
 
 function App() {
   const [allProd, setAllProd] = useState(DATAPRODUCTS);
@@ -24,6 +25,7 @@ function App() {
           <Routes>
             <Route path="/" element={<HomePage allProd={allProd} />} />
             <Route path="/sign-in" element={<SignInPage />} />
+            <Route path="/sign-up" element={<SignUpPage />} />
             <Route path="/carrinho" element={<CartPage />} />
             <Route path="/:sector" element={<SectorPage />} />
             <Route path="/:sector/:id" element={<ProductPage />} />

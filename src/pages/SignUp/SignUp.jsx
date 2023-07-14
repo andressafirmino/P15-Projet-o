@@ -5,10 +5,11 @@ import axios from "axios";
 import CONTEXT from "../../context/context";
 import {ThreeDots }from "react-loader-spinner";
 
-export default function SignInPage() {
-
-  let [email, setEmail] = useState('');
+export default function SignUpPage() {
+  let [name, setName] = useState('')
+  let [email, setEmail] = useState('')
   let [password, setPassword] = useState('')
+  let [passwordCheck, setPasswordCheck] = useState('')
   let [btstats, setBtstats] = useState(false)
   const {setUser} = useContext(CONTEXT);
  
@@ -17,9 +18,10 @@ export default function SignInPage() {
   function login(e) {
     e.preventDefault();
     setBtstats(true);
-
-    const cadastro = axios.post(`${import.meta.env.VITE_API_URL}/sign-in`, {
+    if (password === passwordCheck){
+    const cadastro = axios.post(`${import.meta.env.VITE_API_URL}/sign-up`, {
       email,
+      name,
       password,
     })
     cadastro.then((x) => {
@@ -32,19 +34,23 @@ export default function SignInPage() {
       alert(erro);
       setBtstats(false)
       
-    });
+    });}
   }
 
     return (
       <SingInContainer>
         <form onSubmit={login}>
           <img src="./../public/WS.png" />
+          <input disabled={btstats} placeholder="Nome" type="text" id="name" required value={name} onChange={e => setName(e.target.value)} />
           <input disabled={btstats} placeholder="E-mail" type="email" required value={email} onChange={e => setEmail(e.target.value)} />
           <input disabled={btstats} placeholder="Senha" type="password" required value={password} onChange={e => setPassword(e.target.value)} />
-          {btstats?<button disabled={btstats} type="submit"><ThreeDots color="rgba(255, 255, 255, 1)" height={13} width={51}/></button> :<button disabled={btstats} type="submit">Entrar</button>}
+          <input disabled={btstats} placeholder="Confirme a senha" type="password" value={passwordCheck} onChange={e => setPasswordCheck(e.target.value)} />
+
+          {btstats?<button disabled={btstats} type="submit"><ThreeDots color="rgba(255, 255, 255, 1)" height={13} width={51}/></button> :<button disabled={btstats} type="submit">Cadastrar</button>}
         </form>
-        <Link to={`/sign-up`}>
-          Primeira vez? Cadastre-se!
+
+        <Link to={`/sign-in`}>
+        Já tem uma conta? Entre agora!
         </Link>
       </SingInContainer>
     )
@@ -62,7 +68,7 @@ export default function SignInPage() {
   button {
         display:flex;
         justify-content: center;
-    align-items: center;
+        align-items: center;
         outline: none;
         border: none;
         border-radius: 5px;
@@ -108,6 +114,10 @@ export default function SignInPage() {
         line-height: 18px;
         color: #A68A94;
         text-decoration: none;
-        padding-top: 30px;
+        padding-top: 10px;
+    }
+    img{
+        width: 204px;
+        height: 180px;
     }
 `
