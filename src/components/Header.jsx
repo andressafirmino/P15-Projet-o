@@ -20,10 +20,11 @@ export default function Header() {
                 </div>
             </div>
             <div className="sectors">
-                <p>jantar</p>
-                <p>reunião</p>
-                <p>jardim</p>
-                <p>infantil</p>
+                <p onClick={()=>navigate('/')}>HOME</p>
+                <p onClick={()=>navigate('/jantar')}>JANTAR</p>
+                <p onClick={()=>navigate('/reuniao')}>REUNIÃO</p>
+                <p onClick={()=>navigate('/jardim')}>JARDIM</p>
+                <p onClick={()=>navigate('/infantil')}>INFANTIL</p>
             </div>
 
         </CsHeader>

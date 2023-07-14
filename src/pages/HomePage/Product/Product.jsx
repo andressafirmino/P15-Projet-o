@@ -12,7 +12,7 @@ export default function Product( props ) {
 
     return (
         <CsProduct>
-            <img src={images[0]}  onClick={()=>displayProduct(sector, id)}/>
+            <img src={images}  onClick={()=>displayProduct(sector, id)}/>
             <h2  onClick={()=>displayProduct(sector, id)}>{name}</h2>
             <div className="valuesProduct"> R$ {value.toFixed(2)}</div>
             <button className="addCard">Adquira Agora!</button>
