@@ -2,9 +2,10 @@ import { useState } from "react";
 import { styled } from "styled-components";
 import CartProducts from "./CartProductsPage/CartProducts";
 import Footer from "../../components/Footer";
+import Trash from "../.././assets/logos/trash-outline.svg"
 
-export default function CartPage() {    
-    
+export default function CartPage() {
+
     const cartItem = [
         {
             id: 1,
@@ -29,23 +30,46 @@ export default function CartPage() {
         }
     ]
 
-    
+    const [deleteAll, setDeleteAll] = useState(false);
+
+    function deleteA() {
+        setDeleteAll(true);
+    }
+    function cancel() {
+        setDeleteAll(false);
+    }
     return (
-        <CartContainer>
-            <CartHeader>
-                <p>Produtos</p>
-                <div>
-                    <div>Preço unitário</div>
-                    <div>Quantidade</div>
-                    <div>Preço Total</div>
-                </div>
-            </CartHeader>
-            {cartItem.map(item => (<CartProducts key={item.id} 
-            name={item.name} image={item.image}
-            value={item.value} description={item.description}
-            />))}  
-            <Footer/>        
-        </CartContainer>
+        <>
+            {deleteAll && (
+                <DeleteContainer>
+                    <div>
+                        Deseja deletar todos os itens no carrinho?
+                        <div>
+                            <button onClick={cancel}>Cancelar</button>
+                            <button>Deletar</button>
+                        </div>
+                    </div>
+                </DeleteContainer>
+            )}
+
+            <CartContainer>
+                <CartHeader>
+                    <p>Produtos</p>
+                    <div>
+                        <div>Preço unitário</div>
+                        <div>Quantidade</div>
+                        <div>Preço Total</div>
+                        <img onClick={deleteA} src={Trash} />
+                    </div>
+
+                </CartHeader>
+                {cartItem.map(item => (<CartProducts key={item.id}
+                    name={item.name} image={item.image}
+                    value={item.value} description={item.description}
+                />))}
+                <Footer />
+            </CartContainer>
+        </>
     )
 }
 
@@ -62,6 +86,7 @@ const CartHeader = styled.div`
     height: 60px;
     border: 1px solid #000000;
     border-radius: 5px;
+    padding: 10px;
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -71,10 +96,12 @@ const CartHeader = styled.div`
         color: #73384E;
     }
     div {
+        width: 50%;
         display: flex;
         justify-content: flex-end;
+        border: 1px solid #000000;
         div {
-        width: 200px;
+        width: 100%;
         height: 60px;
         border: 1px solid #000000;
         border-radius: 5px;
@@ -85,6 +112,47 @@ const CartHeader = styled.div`
         color: #73384E;
         margin-left: 10px;
     }
+    img {
+        width: 25px;
+        height: auto;
+    } 
     }
     
+    
+`
+const DeleteContainer = styled.div`
+    width: 100%;
+    height: 100%;
+    position: fixed;
+    left: 0;
+    top: 0;
+    z-index: 1;
+    background-color: rgba(255,255,255, 0.6);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    div {
+        width: 40%;
+        height: 20%;
+        background-color: #73384E;
+        font-size: 30px;
+        color: #FFFFFF;
+        border-radius: 10px;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-around;
+        align-items: center;
+        padding: 10px;
+        div {
+            display: flex;
+            flex-direction: row;
+            button {
+                width: 100%;
+                height: 30px;
+                border-radius: 5px;
+                border: none;
+                margin: 10px 5px 0 ;
+            }
+        }
+    }
 `

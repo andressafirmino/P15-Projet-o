@@ -1,6 +1,7 @@
 import { useContext, useState } from "react";
 import { styled } from "styled-components";
 import CONTEXT from "../../../context/context";
+import Trash from "../../.././assets/logos/trash-outline.svg";
 
 export default function CartProducts(props) {
     const { name, description, value, image } = props;
@@ -28,32 +29,28 @@ export default function CartProducts(props) {
 
     return (
         <ItemList >
-            <div>
+            <InfoItem>
                 <img src={image} />
-                <InfoItem>
-                    <p>{name}</p>
-                    <p>{description}</p>
-                </InfoItem>
-            </div>
-            <div>
-                <Counter>
+                <p>{name}</p>
+            </InfoItem>
+            <Counter>
+                <div>
+                    <p>R${parseFloat(value).toLocaleString('pt-BR')}</p>
+                </div>
+                <CounterButton>
                     <div>
-                        <p>R${parseFloat(value).toLocaleString('pt-BR')}</p>
+                        <button onClick={minus}>-</button>
                     </div>
-                    <CounterButton>
-                        <div>
-                            <button onClick={minus}>-</button>
-                        </div>
-                        <div>{counter}</div>
-                        <div>
-                            <button onClick={plus}>+</button>
-                        </div>
-                    </CounterButton>
+                    <div>{counter}</div>
                     <div>
-                        <p>R${subtotal}</p>
+                        <button onClick={plus}>+</button>
                     </div>
-                </Counter>
-            </div>
+                </CounterButton>
+                <div>
+                    <p>R${subtotal}</p>
+                </div>
+                <img src={Trash} />
+            </Counter>
         </ItemList>
     )
 }
@@ -73,44 +70,51 @@ const ItemList = styled.div`
         display: flex;
         justify-content: flex-start;
         align-items: center;
-        img {
+        
+           
+    }  
+     
+`
+
+const InfoItem = styled.div`
+    width: 50%;
+    display: flex;
+    justify-content: flex-start;
+    align-items: flex-start;
+    p {
+        font-size: 15px;
+        font-weight: 400;
+        color: #000000;
+        overflow-wrap: break-word;
+    }
+    img {
         width: 60px;
         height: 60px;
         border: 1px solid #000000;
         border-radius: 5px;
         margin-right: 10px;
-        }        
-    }    
-`
-
-const InfoItem = styled.div`
-    display: flex;
-    flex-direction: column;
-    justify-content: flex-start;
-    align-items: flex-start;
-    p {
-        font-size: 18px;
-        font-weight: 400;
-        color: #000000;
-    }
+        }  
 `
 const Counter = styled.div`
+    width: 50%;
     border: 1px solid #000000;
-    border-radius: 5px;
     display: flex;
     justify-content: flex-end;
     div {
-        width: 200px;
+        width: 100%;
+        height: 60px;
+        border: 1px solid #000000;
+        border-radius: 5px;
         display: flex;
         justify-content: center;
         align-items: center;
         margin-left: 10px;
-        p {
-            font-size: 20px;
-            font-weight: 700;
-            color: #000000;
-        }
-        
+        font-size: 20px;
+        color: #000000;       
+    }
+    img {        
+        width: 25px;
+        height: auto;
     }
 `
 const CounterButton = styled.div`
