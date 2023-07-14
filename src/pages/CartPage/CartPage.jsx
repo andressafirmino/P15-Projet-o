@@ -1,8 +1,9 @@
-import { useState } from "react";
+import { useContext, useState } from "react";
 import { styled } from "styled-components";
 import CartProducts from "./CartProductsPage/CartProducts";
 import Footer from "../../components/Footer";
 import Trash from "../.././assets/logos/trash-outline.svg"
+import CONTEXT from "../../context/context";
 
 export default function CartPage() {
 
@@ -30,6 +31,7 @@ export default function CartPage() {
         }
     ]
 
+    const {cartProducts} = useContext(CONTEXT);
     const [deleteAll, setDeleteAll] = useState(false);
 
     function deleteA() {
@@ -63,8 +65,8 @@ export default function CartPage() {
                     </div>
 
                 </CartHeader>
-                {cartItem.map(item => (<CartProducts key={item.id}
-                    name={item.name} image={item.image}
+                {cartProducts.map(item => (<CartProducts key={item.id}
+                    name={item.name} images={item.images}
                     value={item.value} description={item.description}
                 />))}
                 <Footer />

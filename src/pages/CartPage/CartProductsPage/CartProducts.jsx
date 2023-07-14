@@ -4,10 +4,11 @@ import CONTEXT from "../../../context/context";
 import Trash from "../../.././assets/logos/trash-outline.svg";
 
 export default function CartProducts(props) {
-    const { name, value, image } = props;
-    const { total, setTotal } = useContext(CONTEXT);
+    const { name, value, images } = props;
+    const { total, setTotal} = useContext(CONTEXT);
     const [counter, setCounter] = useState(1);
     const [subtotal, setSubtotal] = useState(parseFloat(value).toLocaleString("pt-BR"));
+
     
     function minus() {
         if (counter === 0 || total === 0) {
@@ -30,7 +31,7 @@ export default function CartProducts(props) {
     return (
         <ItemList >
             <InfoItem>
-                <img src={image} />
+                <img src={images} />
                 <p>{name}</p>
             </InfoItem>
             <Counter>
