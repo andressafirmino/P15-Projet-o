@@ -2,15 +2,19 @@ import { styled } from "styled-components";
 import Product from "./Product/Product";
 import DATAPRODUCTS from "../../DATA";
 import axios from "axios";
-import { useEffect, useState } from "react";
+import { useContext, useEffect, useState } from "react";
+import CONTEXT from "../../context/context";
+import Footer from "../../components/Footer";
 
 
 export default function HomePage(props) {
   const [allProducts, setAllProducts] = useState('CARREGANDO...');
+  const {cartProducts} = useContext(CONTEXT);
 
   useEffect(()=>{
-    axios.get('http://localhost:5000/')
+    axios.get(`${import.meta.env.VITE_API_URL}`)
     .then((res)=>{
+      console.log(res.data)
       setAllProducts(res.data);
     })
     .catch((err)=>{
@@ -22,10 +26,13 @@ export default function HomePage(props) {
     if(allProducts === 'CARREGANDO...')return allProducts;
     return(
         <CsHomePage>
-            
+
             <main>
                {allProducts.map((prod, index) => <Product prod={prod} id = {index +1 }/>)}               
             </main>
+            {cartProducts.length > 0 && (
+              <Footer/>
+            )}
         </CsHomePage>
     );
 
