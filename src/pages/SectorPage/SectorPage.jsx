@@ -1,15 +1,16 @@
 import { styled } from "styled-components";
-import Product from "./Product/Product";
-import DATAPRODUCTS from "../../DATA";
+import Product from "../HomePage/Product/Product";
 import axios from "axios";
 import { useEffect, useState } from "react";
+import { useParams } from "react-router";
 
 
-export default function HomePage(props) {
+export default function SectorPage(props) {
   const [allProducts, setAllProducts] = useState('CARREGANDO...');
+  const {sector} = useParams();
 
   useEffect(()=>{
-    axios.get('http://localhost:5000/')
+    axios.get(`http://localhost:5000/${sector}`)
     .then((res)=>{
       setAllProducts(res.data);
     })
@@ -17,7 +18,7 @@ export default function HomePage(props) {
       console.log(err.message)
     })
 
-  }, []);
+  }, [sector]);
 
     if(allProducts === 'CARREGANDO...')return allProducts;
     return(
