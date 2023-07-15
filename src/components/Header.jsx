@@ -125,7 +125,8 @@ const CsHeader = styled.div`
         font-size: 20px;
 
         p{
-            border: 2px solid white
+            border: 2px solid white;
+            cursor: pointer;
         }
     }
    

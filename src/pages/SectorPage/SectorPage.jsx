@@ -33,7 +33,7 @@ export default function SectorPage(props) {
 }
 
 const CsHomePage = styled.div`
-  border: 3px solid;
+  //border: 3px solid;
   //background-color: red;
   height: auto;
   width: 100hv;
@@ -41,15 +41,10 @@ const CsHomePage = styled.div`
   display: flex;
   flex-direction: column;
 
-    *{
-        border: 1px solid;
-
-    }
-
   main{
     width: 100hv;
     height: auto;
-    border: 1px solid;
+    //border: 1px solid;
 
     display: flex;
     justify-content: space-between;
