@@ -25,7 +25,9 @@ const FooterContainer = styled.div`
     width: 100%;
     height: 100px;
     background-color: #73384E;
-    border: 1px solid #000000;
+    //border: 1px solid #000000;
+    box-shadow: 2px -4px 4px 0px rgba(0, 0, 0, 0.3);
+
     display: flex;
     justify-content: flex-end;
     align-items: center;
@@ -41,14 +43,19 @@ const FooterContainer = styled.div`
     button {
         width: 200px;
         height: 80px;
-        background-color: green;
-        border: none;
+        background-color: #10af1e ;
+        border: 3px solid white;
         border-radius: 10px;
         margin-left: 40px;
+        cursor: pointer;
+        transition: transform 0.3s;
+        &:hover {
+            transform: scale(1.05);
+        }
         p {
-            font-size: 18px;
+            font-size: 30px;
             font-weight: 400;
-            color: #FFFFFF;
+            color: white;
         }
     }
 `

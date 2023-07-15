@@ -41,6 +41,7 @@ const CsHeader = styled.div`
     position: fixed;
     top: 0;
     left: 0;
+    box-shadow: 2px 4px 4px 0px rgba(0, 0, 0, 0.3);
     //padding: 0 5%;
     
 
@@ -71,7 +72,7 @@ const CsHeader = styled.div`
         .interaction{
             height: 100%;
             width: 30%;
-            border: 1px solid;
+            //border: 1px solid;
 
             display: flex;
             justify-content: space-between;
@@ -82,13 +83,13 @@ const CsHeader = styled.div`
             .carrinho{
                 display: flex;
                 align-items: center;
-                background-color: white;
+                background-color: #10af1e;
                 border: 1px solid;
                 width: auto;
                 border-radius: 12px;
                 padding: 0 10px;
                 cursor: pointer;
-                color: green;
+                color: white;
                 ion-icon{
                     height: 40px;
                     width: 50px;

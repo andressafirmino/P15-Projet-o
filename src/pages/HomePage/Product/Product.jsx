@@ -33,7 +33,7 @@ export default function Product( props ) {
         <CsProduct>
             <img src={images}  onClick={()=>displayProduct(sector, id)}/>
             <h2  onClick={()=>displayProduct(sector, id)}>{name}</h2>
-            <div className="valuesProduct"> R$ {value.toFixed(2)}</div>
+            <div className="valuesProduct"  onClick={()=>displayProduct(sector, id)}> R$ {value.toFixed(2)}</div>
             
             {isSelect ? (
                 <button className="addCard select" onClick={() => rmProduct(id)}>Adicionado ao carrinho!</button>
@@ -53,10 +53,17 @@ const CsProduct = styled.div`
 
     display: flex;
     flex-direction: column;
+    border: 3px solid #73384E;
+    border-radius: 5px;
 
     img{
         width: 100%;
         cursor: pointer;
+        border-radius: 12px;
+        transition: transform 0.3s;
+        &:hover {
+            transform: scale(1.05);
+        }
     }
     h2{
         overflow-y: hidden;
@@ -65,6 +72,8 @@ const CsProduct = styled.div`
     }
     .valuesProduct{
         margin-top: 3px; 
+        cursor: pointer;
+
     }
     .addCard{
         width: 100%;
@@ -73,5 +82,16 @@ const CsProduct = styled.div`
     }
     .select {
         background-color: green;
+    }
+    button{
+        cursor: pointer;
+        background-color: #73384E;
+        color: white;
+        border-radius: 5px;
+        border: none;
+        transition: transform 0.3s;
+        &:hover {
+            transform: scale(1.1);
+        }
     }
 `;
