@@ -41,6 +41,7 @@ const CsHeader = styled.div`
     position: fixed;
     top: 0;
     left: 0;
+    z-index: 100;
     box-shadow: 2px 4px 4px 0px rgba(0, 0, 0, 0.3);
     //padding: 0 5%;
     
