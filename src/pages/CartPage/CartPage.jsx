@@ -7,35 +7,15 @@ import CONTEXT from "../../context/context";
 
 export default function CartPage() {
 
-    const cartItem = [
-        {
-            id: 1,
-            name: "mesa",
-            image: "https://www.larshopping.com.br/media/catalog/product/cache/1/image/1200x/9df78eab33525d08d6e5fb8d27136e95/w/h/whatsapp_image_2022-03-30_at_11.40.16_1_.jpeg",
-            value: "3000.99",
-            description: "Mesa com 6 lugares"
-        },
-        {
-            id: 2,
-            name: "mesa com 6 lugares",
-            image: "https://www.larshopping.com.br/media/catalog/product/cache/1/image/1200x/9df78eab33525d08d6e5fb8d27136e95/w/h/whatsapp_image_2022-03-30_at_11.40.16_1_.jpeg",
-            value: "1120.99",
-            description: "Mesa com 6 lugares"
-        },
-        {
-            id: 3,
-            name: "mesa com 3 lugares",
-            image: "https://www.larshopping.com.br/media/catalog/product/cache/1/image/1200x/9df78eab33525d08d6e5fb8d27136e95/w/h/whatsapp_image_2022-03-30_at_11.40.16_1_.jpeg",
-            value: "2100.00",
-            description: "Mesa com 6 lugares"
-        }
-    ]
-
-    const {cartProducts} = useContext(CONTEXT);
+    const { cartProducts, setCartProducts } = useContext(CONTEXT);
     const [deleteAll, setDeleteAll] = useState(false);
 
     function deleteA() {
         setDeleteAll(true);
+    }
+    function deleteItens() {
+        setCartProducts([]);
+        setDeleteAll(false);
     }
     function cancel() {
         setDeleteAll(false);
@@ -48,7 +28,7 @@ export default function CartPage() {
                         Deseja deletar todos os itens no carrinho?
                         <div>
                             <button onClick={cancel}>Cancelar</button>
-                            <button>Deletar</button>
+                            <button onClick={deleteItens}>Deletar</button>
                         </div>
                     </div>
                 </DeleteContainer>
@@ -63,10 +43,12 @@ export default function CartPage() {
                         <div>Preço Total</div>
                         <img onClick={deleteA} src={Trash} />
                     </div>
-
                 </CartHeader>
+                {cartProducts.length === 0 && (                
+                        <h1>Você não tem itens no carrinho</h1>                   
+                )}
                 {cartProducts.map(item => (<CartProducts key={item.id}
-                    name={item.name} images={item.images}
+                    name={item.name} images={item.images} id={item.id}
                     value={item.value} description={item.description}
                 />))}
                 <Footer />
@@ -81,6 +63,11 @@ const CartContainer = styled.div`
     flex-direction: column;
     align-items: center;
     margin-top: 40px;
+    h1 {
+        margin-top: 200px;
+        font-size: 40px;
+        color: lightgray;
+    }
 `
 
 const CartHeader = styled.div`
