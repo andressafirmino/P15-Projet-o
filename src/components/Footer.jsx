@@ -1,16 +1,22 @@
 import { styled } from "styled-components";
 import CONTEXT from "../context/context";
 import { useContext } from "react";
+import { useNavigate } from "react-router-dom";
 
 
 export default function Footer() {
 
     const {total, user} = useContext(CONTEXT);
-    console.log(user)
+    const navigate = useNavigate();
+
+    function checkLogin() {
+        navigate("/confirmar-informacao");
+    }
+
     return (
         <FooterContainer>
             <p>Total R${total.toLocaleString("pt-BR")}</p>
-            <button><p>Finalizar compra</p></button>
+            <button onClick={checkLogin}><p>Continuar</p></button>
         </FooterContainer>
     )
 }

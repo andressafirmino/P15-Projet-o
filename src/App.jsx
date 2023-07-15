@@ -10,6 +10,7 @@ import CONTEXT from "./context/context";
 import SignInPage from "./pages/SignIn/SignIn";
 import SectorPage from "./pages/SectorPage/SectorPage";
 import SignUpPage from "./pages/SignUp/SignUp";
+import Checkout from "./pages/Checkout/Checkout";
 
 function App() {
   const [allProd, setAllProd] = useState(DATAPRODUCTS);
@@ -34,6 +35,7 @@ function App() {
             <Route path="/carrinho" element={<CartPage />} />
             <Route path="/:sector" element={<SectorPage />} />
             <Route path="/:sector/:id" element={<ProductPage />} />
+            <Route path="/confirmar-informacao" element={<Checkout />} />
           </Routes>
         </BrowserRouter>
       </CONTEXT.Provider>
