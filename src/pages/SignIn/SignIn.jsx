@@ -18,7 +18,7 @@ export default function SignInPage() {
     e.preventDefault();
     setBtstats(true);
 
-    const cadastro = axios.post(`${import.meta.env.VITE_API_URL}/sign-in`, {
+    const cadastro = axios.post(`${import.meta.env.VITE_API_URL}sign-in`, {
       email,
       password,
     })

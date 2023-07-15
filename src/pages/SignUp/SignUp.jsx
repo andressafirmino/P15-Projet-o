@@ -19,7 +19,7 @@ export default function SignUpPage() {
     e.preventDefault();
     setBtstats(true);
     if (password === passwordCheck){
-    const cadastro = axios.post(`${import.meta.env.VITE_API_URL}/sign-up`, {
+    const cadastro = axios.post(`${import.meta.env.VITE_API_URL}sign-up`, {
       email,
       name,
       password,

@@ -5,7 +5,8 @@ import { useContext } from "react";
 
 export default function Footer() {
 
-    const {total} = useContext(CONTEXT);
+    const {total, user} = useContext(CONTEXT);
+    console.log(user)
     return (
         <FooterContainer>
             <p>Total R${total.toLocaleString("pt-BR")}</p>

@@ -14,7 +14,6 @@ export default function HomePage(props) {
   useEffect(()=>{
     axios.get(`${import.meta.env.VITE_API_URL}`)
     .then((res)=>{
-      console.log(res.data)
       setAllProducts(res.data);
     })
     .catch((err)=>{
