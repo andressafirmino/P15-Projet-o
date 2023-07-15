@@ -27,7 +27,7 @@ export default function HomePage(props) {
         <CsHomePage>
 
             <main>
-               {allProducts.map((prod, index) => <Product prod={prod} id = {index +1 }/>)}               
+               {allProducts.map((prod, index) => <Product prod={prod} key = {index}/>)}               
             </main>
             {cartProducts.length > 0 && (
               <Footer/>
