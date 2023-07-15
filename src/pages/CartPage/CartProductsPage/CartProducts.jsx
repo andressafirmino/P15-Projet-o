@@ -2,16 +2,25 @@ import { useContext, useState } from "react";
 import { styled } from "styled-components";
 import CONTEXT from "../../../context/context";
 import Trash from "../../.././assets/logos/trash-outline.svg";
+import { useNavigate } from "react-router-dom";
 
 export default function CartProducts(props) {
-    const { name, value, image } = props;
-    const { total, setTotal } = useContext(CONTEXT);
+    const { name, value, images, id } = props;
+    const { total, setTotal, cartProducts, setCartProducts } = useContext(CONTEXT);
     const [counter, setCounter] = useState(1);
     const [subtotal, setSubtotal] = useState(parseFloat(value).toLocaleString("pt-BR"));
-    
+    const navigate = useNavigate();
+
+
     function minus() {
         if (counter === 0 || total === 0) {
             return;
+        }
+        if (counter === 1) {
+            const newArray = [...cartProducts];
+            let position = newArray.findIndex(item => item.id === id);
+            let remove = newArray.splice(position, 1);
+            setCartProducts(newArray);
         }
         const newCounter = counter - 1;
         setCounter(newCounter > 0 ? newCounter : 0);
@@ -27,10 +36,17 @@ export default function CartProducts(props) {
         setTotal((prevTotal) => prevTotal + parseFloat(value));
     }
 
+    function deleteItem() {
+        const newArray = [...cartProducts];
+            let position = newArray.findIndex(item => item.id === id);
+            let remove = newArray.splice(position, 1);
+            setCartProducts(newArray);
+    }
+
     return (
         <ItemList >
             <InfoItem>
-                <img src={image} />
+                <img src={images} />
                 <p>{name}</p>
             </InfoItem>
             <Counter>
@@ -49,9 +65,9 @@ export default function CartProducts(props) {
                 <div>
                     <p>R${subtotal}</p>
                 </div>
-                <ion-icon name="trash-outline"  className="lixinho"></ion-icon>
+                <ion-icon name="trash-outline" className="lixinho" onClick={deleteItem}></ion-icon>
 
-                
+
             </Counter>
         </ItemList>
     )

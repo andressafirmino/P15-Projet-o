@@ -15,11 +15,16 @@ function App() {
   const [allProd, setAllProd] = useState(DATAPRODUCTS);
   const [user, setUser] = useState();
   const [total, setTotal] = useState(0);
+  const [cartProducts, setCartProducts] = useState([]);
+  if(cartProducts.length > 0) {
+    localStorage.setItem("cartProducts", JSON.stringify(cartProducts));
+  }  
 
   return (
     <PagesContainer>
       <CONTEXT.Provider value={{ currentId: '', user, setUser,
-        total, setTotal }}>
+        total, setTotal,
+        cartProducts, setCartProducts }}>
         <BrowserRouter>
           <Header />
           <Routes>
