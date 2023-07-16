@@ -41,6 +41,7 @@ export default function CartProducts(props) {
             let position = newArray.findIndex(item => item.id === id);
             let remove = newArray.splice(position, 1);
             setCartProducts(newArray);
+            setTotal((prevTotal) => prevTotal - parseFloat(value));
     }
 
     return (
@@ -66,8 +67,6 @@ export default function CartProducts(props) {
                     <p>R${subtotal}</p>
                 </div>
                 <ion-icon name="trash-outline" className="lixinho" onClick={deleteItem}></ion-icon>
-
-
             </Counter>
         </ItemList>
     )
@@ -77,7 +76,7 @@ export default function CartProducts(props) {
 const ItemList = styled.div`
     width: 100%;
     height: 80px;
-    border: 1px solid #000000;
+    border: 3px solid #73384E;
     border-radius: 5px;
     padding: 10px;
     display: flex;
@@ -87,13 +86,10 @@ const ItemList = styled.div`
     div {
         display: flex;
         justify-content: flex-start;
-        align-items: center;
-        
-           
+        align-items: center;           
     }  
      
 `
-
 const InfoItem = styled.div`
     width: 50%;
     display: flex;
@@ -108,27 +104,27 @@ const InfoItem = styled.div`
     img {
         width: 60px;
         height: 60px;
-        border: 1px solid #000000;
+        border: 1px solid #73384E;
         border-radius: 5px;
         margin-right: 10px;
         }  
 `
 const Counter = styled.div`
     width: 50%;
-    border: 1px solid #000000;
     display: flex;
     justify-content: flex-end;
     div{
         width: 100%;
-        height: 60px;
-        border: 1px solid #000000;
-        border-radius: 5px;
+        height: 60px;        
         display: flex;
         justify-content: center;
         align-items: center;
         margin-left: 10px;
         font-size: 20px;
         color: #000000;       
+    }
+    ion-icon {
+        font-size: 40px;
     }
 `;
 const CounterButton = styled.div`
@@ -137,7 +133,11 @@ const CounterButton = styled.div`
     div {
         width: 20px;
         height: 20px;
-        background-color: lightgray;
         text-align: center;
+    }
+    button {
+        background-color: #FFFFFF;
+        border-radius: 3px;
+        border: 1px solid lightgrey;
     }
 `

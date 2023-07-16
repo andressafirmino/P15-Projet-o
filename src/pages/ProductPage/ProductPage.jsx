@@ -12,7 +12,7 @@ export default function ProductPage(props) {
 
 
     useEffect(()=>{
-        axios.post('http://localhost:5000/singleProduct', { id})
+        axios.post(`${import.meta.env.VITE_API_URL}singleProduct`, { id})
             .then((res)=>{
                 //console.log('este é o single product',res.data)
                 setCurrenteProd(res.data);
