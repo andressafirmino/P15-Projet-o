@@ -19,13 +19,21 @@ export default function Checkout() {
     const [sucess, setSucess] = useState(false);
     const navigate = useNavigate();
 
-    function buy() {
-        const url = `${import.meta.env.VITE_API_URL}checkout`;
+    function buy(e) {
+        e.preventDefault();
+        const url = `${import.meta.env.VITE_API_URL}confirmar-informacao`;
         const info = {
             name, email, state, city, neighborhood, address, complement, pay
         };
+        console.log("foi")
         axios.post(url, info)
-            .then(() => setSucess(true));
+            .then(() => {
+                console.log("foi")
+                setSucess(true)
+            })
+            .catch(e => {
+                console.log(e.response.data.message);
+            })
     }
 
     return (

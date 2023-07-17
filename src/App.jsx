@@ -12,13 +12,11 @@ import SignUpPage from "./pages/SignUp/SignUp";
 import Checkout from "./pages/Checkout/Checkout";
 
 function App() {
+  
   const [user, setUser] = useState();
   const [total, setTotal] = useState(0);
   const [cartProducts, setCartProducts] = useState([]);
-  const [checkout, setCheckout] = useState(false);
-  if(cartProducts.length > 0) {
-    localStorage.setItem("cartProducts", JSON.stringify(cartProducts));
-  }  
+  const [checkout, setCheckout] = useState(false); 
 
   return (
     <PagesContainer>
