@@ -16,6 +16,11 @@ export default function Product( props ) {
         let newArray = [...cartProducts, {
             name, images, value, id
         }];
+
+        const serialNewArray = JSON.stringify(newArray);
+        localStorage.setItem("localCart", serialNewArray);
+
+        
         setCartProducts(newArray);
         setIsSelect(true);  
         setTotal((prevTotal) => prevTotal + parseFloat(value));     

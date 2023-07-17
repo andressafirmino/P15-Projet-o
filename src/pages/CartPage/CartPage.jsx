@@ -9,6 +9,11 @@ export default function CartPage() {
 
     const { cartProducts, setCartProducts } = useContext(CONTEXT);
     const [deleteAll, setDeleteAll] = useState(false);
+    let renderCart = undefined;
+
+    if( !cartProducts && ){
+
+    }
 
     function deleteA() {
         setDeleteAll(true);
