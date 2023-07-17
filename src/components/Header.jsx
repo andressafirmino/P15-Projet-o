@@ -25,6 +25,8 @@ export default function Header() {
                 <p onClick={()=>{navigate('/reuniao');}}>REUNIÃO</p>
                 <p onClick={()=>{navigate('/jardim');}}>JARDIM</p>
                 <p onClick={()=>{navigate('/infantil'); }}>INFANTIL</p>
+                <p onClick={()=>{navigate('/minhas-compras'); }}>Minhas Compras</p>
+
             </div>
 
         </CsHeader>
