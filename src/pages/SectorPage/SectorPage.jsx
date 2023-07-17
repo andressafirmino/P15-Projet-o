@@ -13,7 +13,7 @@ export default function SectorPage(props) {
   const {cartProducts} = useContext(CONTEXT);
 
   useEffect(()=>{
-    axios.get(`${import.meta.env.VITE_API_URL}/${sector}`)
+    axios.get(`${import.meta.env.VITE_API_URL}${sector}`)
     .then((res)=>{
       setAllProducts(res.data);
     })

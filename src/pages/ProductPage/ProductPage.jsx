@@ -34,7 +34,7 @@ export default function ProductPage(props) {
     }
 
     useEffect(() => {
-        axios.post(`${import.meta.env.VITE_API_URL}/singleProduct`, { id })
+        axios.post(`${import.meta.env.VITE_API_URL}singleProduct`, { id })
             .then((res) => {
                 //console.log('este é o single product',res.data)
                 setCurrenteProd(res.data);
