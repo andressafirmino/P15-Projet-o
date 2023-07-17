@@ -130,6 +130,7 @@ return (
 }
 
 const SingInContainer = styled.section`
+  margin-top: 100px;
   height: 100vh;
   display: flex;
   flex-direction: column;
