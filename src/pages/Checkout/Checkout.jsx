@@ -6,8 +6,8 @@ import { useNavigate } from "react-router-dom";
 
 export default function Checkout() {
 
-    const { total, user } = useContext(CONTEXT);
-    const [pay, setPay] = useState("");
+    const { total, user, cartProducts } = useContext(CONTEXT);
+    const [pay, setPay] = useState('');
     const [name, setName] = useState('');
     const [email, setEmail] = useState('');
     const [state, setState] = useState('');
@@ -23,7 +23,7 @@ export default function Checkout() {
         e.preventDefault();
         const url = `${import.meta.env.VITE_API_URL}confirmar-informacao`;
         const info = {
-            name, email, state, city, neighborhood, address, complement, pay
+            name, email, state, city, neighborhood, address, complement, pay, total, cartProducts
         };
         axios.post(url, info)
             .then(() => {

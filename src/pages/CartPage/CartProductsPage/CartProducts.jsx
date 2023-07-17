@@ -87,8 +87,7 @@ const ItemList = styled.div`
         display: flex;
         justify-content: flex-start;
         align-items: center;           
-    }  
-     
+    }      
 `
 const InfoItem = styled.div`
     width: 50%;
@@ -126,7 +125,7 @@ const Counter = styled.div`
     ion-icon {
         font-size: 40px;
     }
-`;
+`
 const CounterButton = styled.div`
     display: flex;
     justify-content: center;
