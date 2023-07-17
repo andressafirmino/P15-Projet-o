@@ -1,16 +1,19 @@
 import { styled } from "styled-components";
 import Product from "../HomePage/Product/Product";
 import axios from "axios";
-import { useEffect, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import { useParams } from "react-router";
+import CONTEXT from "../../context/context";
+import Footer from "../../components/Footer";
 
 
 export default function SectorPage(props) {
   const [allProducts, setAllProducts] = useState('CARREGANDO...');
   const {sector} = useParams();
+  const {cartProducts} = useContext(CONTEXT);
 
   useEffect(()=>{
-    axios.get(`http://localhost:5000/${sector}`)
+    axios.get(`${import.meta.env.VITE_API_URL}/${sector}`)
     .then((res)=>{
       setAllProducts(res.data);
     })
@@ -27,6 +30,9 @@ export default function SectorPage(props) {
             <main>
                {allProducts.map((prod, index) => <Product prod={prod} key = {index }/>)}               
             </main>
+            {cartProducts.length > 0 && (
+              <Footer/>
+            )}
         </CsHomePage>
     );
 

@@ -41,11 +41,11 @@ export default function CartPage() {
                         <div>Preço unitário</div>
                         <div>Quantidade</div>
                         <div>Preço Total</div>
-                        <img onClick={deleteA} src={Trash} />
+                        <ion-icon name="trash-outline" onClick={deleteA} className="lixinho"></ion-icon>
                     </div>
                 </CartHeader>
-                {cartProducts.length === 0 && (                
-                        <h1>Você não tem itens no carrinho</h1>                   
+                {cartProducts.length === 0 && (
+                    <h1>Você não tem itens no carrinho</h1>
                 )}
                 {cartProducts.map(item => (<CartProducts key={item.id}
                     name={item.name} images={item.images} id={item.id}
@@ -73,7 +73,7 @@ const CartContainer = styled.div`
 const CartHeader = styled.div`
     width: 100%;
     height: 60px;
-    border: 1px solid #000000;
+    border: 3px solid #73384E;
     border-radius: 5px;
     padding: 10px;
     display: flex;
@@ -88,12 +88,13 @@ const CartHeader = styled.div`
         width: 50%;
         display: flex;
         justify-content: flex-end;
-        border: 1px solid #000000;
+        align-items: center;
+        ion-icon {
+            font-size: 40px;
+        }
         div {
         width: 100%;
         height: 60px;
-        border: 1px solid #000000;
-        border-radius: 5px;
         display: flex;
         justify-content: center;
         align-items: center;
@@ -105,8 +106,7 @@ const CartHeader = styled.div`
         width: 25px;
         height: auto;
     } 
-    }
-    
+    }    
     
 `
 const DeleteContainer = styled.div`

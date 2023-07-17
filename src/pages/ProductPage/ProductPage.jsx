@@ -12,7 +12,7 @@ export default function ProductPage(props) {
 
 
     useEffect(()=>{
-        axios.post('http://localhost:5000/singleProduct', { id})
+        axios.post(`${import.meta.env.VITE_API_URL}singleProduct`, { id})
             .then((res)=>{
                 //console.log('este é o single product',res.data)
                 setCurrenteProd(res.data);
@@ -52,44 +52,50 @@ export default function ProductPage(props) {
 
 const CsProductPage = styled.div`
     width: 100%;
-    border: 1px solid;
+    //border: 1px solid;
     display:flex;
     flex-direction: column;
     align-items: center;
+    margin-top: 20px;
     
     main{
         height: 500px;
         width: 100%;
-        border: 1px solid;
+        //border: 1px solid;
         display: flex;
 
         .imagesProduct{
             width: 50%;
             height: 100%;
-            border: 1px solid;
+            //border: 1px solid;
             display: flex;
 
             .containerSmallImgs{
                 height: 100%;
                 width: 20%;
-                border: 1px solid;
                 img{
                     height: 20%;
-                    border: 1px solid;
+                    border: 4px solid #73384E;               
+                    border-radius: 50%;
                     width: 100%;
                     cursor: pointer;
+                    &:hover{
+                        transform: scale(1.05);
+  
+                    }
                 }
             }
             .bigImg{
-                border: 1px solid;
+                //border: 1px solid;
                 height: 100%;
                 width: 80%;
+                border-radius: 12px;
             }
         }
         .lookAndAct{
             width: 50%;
             height: 100%;
-            border: 1px solid;
+            //border: 1px solid;
             padding: 10px;
             display: flex;
             flex-direction: column;
@@ -119,7 +125,7 @@ const CsProductPage = styled.div`
     .description{
         flex-direction: column;
         text-align: center;
-        border: 1px solid pink;
+        //border: 1px solid pink;
         width: 80%;
 
         h1{
