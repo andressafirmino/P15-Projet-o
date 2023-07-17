@@ -6,12 +6,12 @@ import { useNavigate } from "react-router-dom";
 
 export default function Footer() {
 
-    const {total, setCheckout} = useContext(CONTEXT);
+    const {total, setCheckout, user} = useContext(CONTEXT);
     const navigate = useNavigate();
     const lsToken = localStorage.getItem("token"); 
-
+    console.log(user)
     function checkLogin() {
-        if (lsToken === null) {
+        if (!user) {
             setCheckout(true);
             navigate("/sign-in");
         } else {
