@@ -19,7 +19,6 @@ export default function Checkout() {
     const [sucess, setSucess] = useState(false);
     const navigate = useNavigate();
 
-
     const config = {
         headers: {
             "Authorization": `Bearer ${user?.token}`
@@ -41,15 +40,16 @@ export default function Checkout() {
 
     }, []);
 
-
-
+    const id = user.id;
+    console.log(user.id)
     function buy(e) {
         e.preventDefault();
         const url = `${import.meta.env.VITE_API_URL}confirmar-informacao`;
         const info = {
-            name, email, state, city, neighborhood, address, complement, pay, total, cartProducts
+            id, name, email, state, city, neighborhood, address, complement, pay, total, cartProducts
         };
-        axios.post(url, info)
+        console.log(info)
+        axios.post(url, info, config)
             .then(() => {
                 setSucess(true)
             })
