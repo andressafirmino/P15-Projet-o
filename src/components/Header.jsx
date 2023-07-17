@@ -1,5 +1,5 @@
 import { styled } from "styled-components";
-import logo from '../../public/WS.png' 
+import logo from '../assets/logos/WS.png' 
 import { useNavigate } from "react-router-dom";
 
 export default function Header() {

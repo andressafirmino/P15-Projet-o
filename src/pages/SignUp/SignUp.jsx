@@ -11,7 +11,7 @@ export default function SignUpPage() {
   const [password, setPassword] = useState('')
   const [passwordCheck, setPasswordCheck] = useState('')
   const [btstats, setBtstats] = useState(false)
-  const { setUser, user } = useContext(CONTEXT);
+  const { setUser, user, checkout } = useContext(CONTEXT);
 
   const [address, setAddress] = useState('')
   const [nameAddress, setNameAddress] = useState('')
@@ -53,21 +53,23 @@ export default function SignUpPage() {
     e.preventDefault();
     setBtstats(true);
 
-    if(!nameAddress || !zipCode || !state || !city || !street || !district || !celNumber || !number) {
+    if (!nameAddress || !zipCode || !state || !city || !street || !district || !celNumber || !number) {
       setBtstats(false);
-      return alert ( "preencha todos os campos de endereço ou deixe todos em branco")}
+      return alert("preencha todos os campos de endereço ou deixe todos em branco")
+    }
 
     if (password === passwordCheck) {
       const cadastro = axios.post(`${import.meta.env.VITE_API_URL}sign-up`, {
         email,
         name,
-        password,      
+        password,
       })
-      cadastro.then((x) => {       
+      cadastro.then((x) => {
         setBtstats(false)
         console.log(x.data.insertedId)
-       
-        if(nameAddress && zipCode && state && city && street && district && celNumber && number) return sendaddress(x.data.insertedId)
+
+        if (nameAddress && zipCode && state && city && street && district && celNumber && number) return sendaddress(x.data.insertedId)
+        if (checkout) return signin()
         navigate("/sign-in")
       })
       cadastro.catch(erro => {
@@ -81,52 +83,74 @@ export default function SignUpPage() {
     console.log(id)
     const userId = id
 
-    const cadastro = axios.post(`${import.meta.env.VITE_API_URL}address`, {   
-      id: userId, nameAddress, zipCode, state, city, street, district, number, celNumber, othersInfo      
+    const cadastro = axios.post(`${import.meta.env.VITE_API_URL}address`, {
+      id: userId, nameAddress, zipCode, state, city, street, district, number, celNumber, othersInfo
     })
-  cadastro.then((x) => {
-      
-    setBtstats(false)
-    navigate('/sign-in')
-  })
+    cadastro.then((x) => {
+      signin()
+      setBtstats(false)
+      navigate('/sign-in')
+    })
 
-  cadastro.catch(erro => {
-    alert(erro);
-    setBtstats(false)
+    cadastro.catch(erro => {
+      alert(erro);
+      setBtstats(false)
 
-  });
+    });
 
-}
+  }
 
-return (
-  <SingInContainer>
-    <form onSubmit={login}>
-      <img src="./../public/WS.png" />
-      <input disabled={btstats} placeholder="Nome" type="text" id="name" required value={name} onChange={e => setName(e.target.value)} />
-      <input disabled={btstats} placeholder="E-mail" type="email" required value={email} onChange={e => setEmail(e.target.value)} />
-      <input disabled={btstats} placeholder="Senha" type="password" required value={password} onChange={e => setPassword(e.target.value)} />
-      <input disabled={btstats} placeholder="Confirme a senha" type="password" value={passwordCheck} onChange={e => setPasswordCheck(e.target.value)} />
+  function signin(e) {
+    e.preventDefault();
+    setBtstats(true);
 
-      <h2>---Cadastrar endereço---</h2>
-      <input disabled={btstats} placeholder="Nome destinatário" type="text" id="nameAddress"  value={nameAddress} onChange={e => setNameAddress(e.target.value)} />
-      <input disabled={btstats} placeholder="Celular" type="text" id="cel"  value={celNumber} onChange={e => setCelNumber(e.target.value)} />
+    const cadastro = axios.post(`${import.meta.env.VITE_API_URL}sign-in`, {
+      email,
+      password,
+    })
+    cadastro.then((x) => {
+      setUser(x.data.user)
+      setBtstats(false)
+      if (checkout) navigate('/carrinho')
+      console.log(x.data.user)
+    })
 
-      <input disabled={btstats} placeholder="cep" type="text" id="cep"  value={zipCode} onChange={e => setZipCode(e.target.value)} />
-      <input disabled={btstats} placeholder="Estado" type="text" id="estado"  value={state} onChange={e => setState(e.target.value)} />
-      <input disabled={btstats} placeholder="Cidade" type="text" id="cidade"  value={city} onChange={e => setCity(e.target.value)} />
-      <input disabled={btstats} placeholder="Bairro" type="text" id="bairro"  value={district} onChange={e => setDistrict(e.target.value)} />
-      <input disabled={btstats} placeholder="Endereço" type="text" id="rua"  value={street} onChange={e => setStreet(e.target.value)} />
-      <input disabled={btstats} placeholder="Numero" type="text" id="numero"  value={number} onChange={e => setNumber(e.target.value)} />
-      <input disabled={btstats} placeholder="Complemento" type="text" id="complemento" value={othersInfo} onChange={e => setOthersInfo(e.target.value)} />
+    cadastro.catch(erro => {
+      alert(erro);
+      setBtstats(false)
 
-      {btstats ? <button disabled={btstats} type="submit"><ThreeDots color="rgba(255, 255, 255, 1)" height={13} width={51} /></button> : <button disabled={btstats} type="submit">Cadastrar</button>}
-    </form>
+    });
+  }
 
-    <Link to={`/sign-in`}>
-      Já tem uma conta? Entre agora!
-    </Link>
-  </SingInContainer>
-)
+  return (
+    <SingInContainer>
+      <form onSubmit={login}>
+        <img src="./../public/WS.png" />
+        <input disabled={btstats} placeholder="Nome" type="text" id="name" required value={name} onChange={e => setName(e.target.value)} />
+        <input disabled={btstats} placeholder="E-mail" type="email" required value={email} onChange={e => setEmail(e.target.value)} />
+        <input disabled={btstats} placeholder="Senha" type="password" required value={password} onChange={e => setPassword(e.target.value)} />
+        <input disabled={btstats} placeholder="Confirme a senha" type="password" value={passwordCheck} onChange={e => setPasswordCheck(e.target.value)} />
+
+        <h2>---Cadastrar endereço---</h2>
+        <input disabled={btstats} placeholder="Nome destinatário" type="text" id="nameAddress" value={nameAddress} onChange={e => setNameAddress(e.target.value)} />
+        <input disabled={btstats} placeholder="Celular" type="text" id="cel" value={celNumber} onChange={e => setCelNumber(e.target.value)} />
+
+        <input disabled={btstats} placeholder="cep" type="text" id="cep" value={zipCode} onChange={e => setZipCode(e.target.value)} />
+        <input disabled={btstats} placeholder="Estado" type="text" id="estado" value={state} onChange={e => setState(e.target.value)} />
+        <input disabled={btstats} placeholder="Cidade" type="text" id="cidade" value={city} onChange={e => setCity(e.target.value)} />
+        <input disabled={btstats} placeholder="Bairro" type="text" id="bairro" value={district} onChange={e => setDistrict(e.target.value)} />
+        <input disabled={btstats} placeholder="Endereço" type="text" id="rua" value={street} onChange={e => setStreet(e.target.value)} />
+        <input disabled={btstats} placeholder="Numero" type="text" id="numero" value={number} onChange={e => setNumber(e.target.value)} />
+        <input disabled={btstats} placeholder="Complemento" type="text" id="complemento" value={othersInfo} onChange={e => setOthersInfo(e.target.value)} />
+
+        {btstats ? <button disabled={btstats} type="submit"><ThreeDots color="rgba(255, 255, 255, 1)" height={13} width={51} /></button> : <button disabled={btstats} type="submit">Cadastrar</button>}
+      </form>
+
+      <Link to={`/sign-in`}>
+        Já tem uma conta? Entre agora!
+      </Link>
+    </SingInContainer>
+  )
 }
 
 const SingInContainer = styled.section`

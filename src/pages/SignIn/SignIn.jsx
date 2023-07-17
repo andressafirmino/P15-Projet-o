@@ -13,7 +13,7 @@ export default function SignInPage() {
   let [email, setEmail] = useState('');
   let [password, setPassword] = useState('')
   let [btstats, setBtstats] = useState(false)
-  const {setUser} = useContext(CONTEXT);
+  const {setUser, checkout} = useContext(CONTEXT);
 
  
   const navigate = useNavigate()
@@ -29,6 +29,7 @@ export default function SignInPage() {
     cadastro.then((x) => {
       setUser(x.data.user)
       setBtstats(false)
+      if(checkout) navigate('/carrinho')
       console.log(x.data.user)
     })
 
