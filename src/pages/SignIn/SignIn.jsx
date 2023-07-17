@@ -29,7 +29,9 @@ export default function SignInPage() {
     cadastro.then((x) => {
       setUser(x.data.user)
       setBtstats(false)
-      if(checkout) navigate('/carrinho')
+      if(checkout) return navigate('/carrinho')
+      navigate("/")
+      
       console.log(x.data.user)
     })
 
