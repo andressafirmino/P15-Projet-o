@@ -8,7 +8,7 @@ export default function Footer() {
 
     const {total, setCheckout} = useContext(CONTEXT);
     const navigate = useNavigate();
-    const lsToken = 'aaaa' //localStorage.getItem("token"); 
+    const lsToken = localStorage.getItem("token"); 
 
     function checkLogin() {
         if (lsToken === null) {

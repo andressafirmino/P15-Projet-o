@@ -25,10 +25,8 @@ export default function Checkout() {
         const info = {
             name, email, state, city, neighborhood, address, complement, pay
         };
-        console.log("foi")
         axios.post(url, info)
             .then(() => {
-                console.log("foi")
                 setSucess(true)
             })
             .catch(e => {
