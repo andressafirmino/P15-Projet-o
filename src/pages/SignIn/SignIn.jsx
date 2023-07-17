@@ -4,6 +4,9 @@ import { useState, useEffect, useContext } from "react";
 import axios from "axios";
 import CONTEXT from "../../context/context";
 import {ThreeDots }from "react-loader-spinner";
+import logo from "../../assets/logos/WS.png"
+
+
 
 export default function SignInPage() {
 
@@ -11,6 +14,7 @@ export default function SignInPage() {
   let [password, setPassword] = useState('')
   let [btstats, setBtstats] = useState(false)
   const {setUser} = useContext(CONTEXT);
+
  
   const navigate = useNavigate()
 
@@ -38,7 +42,7 @@ export default function SignInPage() {
     return (
       <SingInContainer>
         <form onSubmit={login}>
-          <img src="./../public/WS.png" />
+          <img src={logo} />
           <input disabled={btstats} placeholder="E-mail" type="email" required value={email} onChange={e => setEmail(e.target.value)} />
           <input disabled={btstats} placeholder="Senha" type="password" required value={password} onChange={e => setPassword(e.target.value)} />
           {btstats?<button disabled={btstats} type="submit"><ThreeDots color="rgba(255, 255, 255, 1)" height={13} width={51}/></button> :<button disabled={btstats} type="submit">Entrar</button>}
