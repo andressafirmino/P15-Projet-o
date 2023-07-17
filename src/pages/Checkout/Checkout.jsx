@@ -1,4 +1,4 @@
-import { useContext, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import { styled } from "styled-components";
 import CONTEXT from "../../context/context";
 import axios from "axios";
@@ -18,6 +18,30 @@ export default function Checkout() {
     const [disabled, setDisabled] = useState(false);
     const [sucess, setSucess] = useState(false);
     const navigate = useNavigate();
+
+
+    const config = {
+        headers: {
+            "Authorization": `Bearer ${user?.token}`
+        }
+    }
+
+    useEffect(() => {
+        axios.get(`${import.meta.env.VITE_API_URL}address`, config)
+            .then((res) => {
+                setName(res.data.address.nameAddress)
+                setEmail(user.email)
+                setState(res.data.address.state)
+                setCity(res.data.address.city)
+                setNeighborhood(res.data.address.district)
+                setAddress(res.data.address.street)
+                setComplement(res.data.address.othersInfo)
+            })
+            .catch(erro => console.log(erro))
+
+    }, []);
+
+
 
     function buy(e) {
         e.preventDefault();

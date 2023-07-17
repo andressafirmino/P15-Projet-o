@@ -4,7 +4,7 @@ import CartPage from "./pages/CartPage/CartPage";
 import HomePage from "./pages/HomePage/HomePage";
 import Header from "./components/Header";
 import ProductPage from "./pages/ProductPage/ProductPage";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import CONTEXT from "./context/context";
 import SignInPage from "./pages/SignIn/SignIn";
 import SectorPage from "./pages/SectorPage/SectorPage";
